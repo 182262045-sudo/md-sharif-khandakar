@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Md Sharif Khandakar | 3D Animated CV</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+--bg:#050816;
+--card:rgba(255,255,255,0.08);
+--border:rgba(255,255,255,0.2);
+--accent:#38bdf8;
+--accent2:#22c55e;
+--text:#e5e7eb;
+--muted:#94a3b8;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+font-family:'Poppins',sans-serif;
+background:radial-gradient(circle at top,#0f172a,#020617);
+color:var(--text);
+overflow-x:hidden;
+perspective:1200px;
+}
+
+/* ===== FLOATING BACKGROUND ===== */
+.bg-shape{
+position:fixed;
+border-radius:50%;
+filter:blur(120px);
+opacitiy:.6;
+animation:float 20s infinite alternate;
+z-index:-1;
+}
+.bg1{width:420px;height:420px;background:#38bdf8;top:-120px;left:-120px}
+.bg2{width:380px;height:380px;background:#22c55e;bottom:-120px;right:-120px;animation-delay:4s}
+
+@keyframes float{
+from{transform:translateY(0) translateX(0)}
+to{transform:translateY(-120px) translateX(80px)}
+}
+
+/* ===== HERO ===== */
+.hero{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+transform-style:preserve-3d;
+}
+
+.hero-card{
+background:var(--card);
+backdrop-filter:blur(18px);
+border:1px solid var(--border);
+border-radius:30px;
+padding:60px 50px;
+box-shadow:0 40px 120px rgba(0,0,0,.6);
+transform:rotateX(10deg) rotateY(-10deg);
+transition:1s;
+}
+
+.hero-card:hover{
+transform:rotateX(0) rotateY(0) scale(1.05);
+}
+
+.hero img{
+width:190px;
+height:190px;
+border-radius:50%;
+border:6px solid var(--accent);
+box-shadow:0 0 60px rgba(56,189,248,.8);
+}
+
+.hero h1{font-size:3.5rem;margin-top:25px}
+.hero p{color:var(--muted)}
+
+.hero-btns{
+margin-top:30px;
+display:flex;
+gap:18px;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.btn{
+padding:14px 34px;
+border-radius:40px;
+font-weight:600;
+color:white;
+background:linear-gradient(135deg,var(--accent),var(--accent2));
+text-decoration:none;
+box-shadow:0 20px 60px rgba(56,189,248,.6);
+transition:.4s;
+}
+
+.btn:hover{transform:translateY(-8px) scale(1.08)}
+
+/* ===== SECTIONS ===== */
+section{
+max-width:1200px;
+margin:120px auto;
+padding:60px;
+border-radius:35px;
+background:var(--card);
+backdrop-filter:blur(18px);
+border:1px solid var(--border);
+box-shadow:0 40px 120px rgba(0,0,0,.5);
+opacity:0;
+transform:translateY(80px) rotateX(10deg);
+transition:1.2s;
+}
+
+section.show{
+opacity:1;
+transform:none;
+}
+
+h2{font-size:2.4rem;margin-bottom:30px}
+
+/* ===== GRID / CARDS ===== */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:26px;
+}
+
+.card{
+padding:30px;
+border-radius:25px;
+background:linear-gradient(135deg,rgba(56,189,248,.18),rgba(34,197,94,.12));
+transform-style:preserve-3d;
+transition:.6s;
+}
+
+.card:hover{
+transform:translateY(-18px) rotateX(8deg) rotateY(-8deg);
+}
+
+/* ===== TIMELINE ===== */
+.timeline{
+border-left:4px solid var(--accent);
+padding-left:30px;
+}
+.timeline div{margin-bottom:35px}
+.timeline span{color:var(--accent);font-size:14px}
+
+/* ===== FOOTER ===== */
+footer{
+text-align:center;
+padding:80px 20px;
+color:var(--muted);
+}
+
+@media(max-width:768px){
+.hero h1{font-size:2.4rem}
+section{padding:35px;margin:80px 15px}
+}
+</style>
+</head>
+<body>
+
+<div class="bg-shape bg1"></div>
+<div class="bg-shape bg2"></div>
+
+<!-- HERO -->
+<div class="hero">
+<div class="hero-card">
+<img src="profile.jpg" alt="Sharif">
+<h1>Md Sharif Khandakar</h1>
+<p>Civil Engineer • GIS Specialist • 3D Visualizer</p>
+<p>Bhairab, Kishoreganj | +8801689477972 | sharifkhandakar594@gmail.com</p>
+<div class="hero-btns">
+<a class="btn" href="cv.pdf">Download CV</a>
+<a class="btn" href="https://www.youtube.com/@mdsharifkhandakar">YouTube</a>
+<a class="btn" href="https://mdsharifkhandakardesigner.wordpress.com">Portfolio</a>
+</div>
+</div>
+</div>
+
+<section>
+<h2>Professional Summary</h2>
+<p>Detail-oriented Civil Engineering professional with extensive experience in GIS mapping, land surveying, soil testing, and advanced 2D/3D visualization. Proven expertise in national digital land zoning projects, including mouza digitization, georeferencing, and spatial data management. Highly proficient in AutoCAD, ArcGIS, GPS, and Total Station, with a strong focus on accuracy, data integrity, and professional technical documentation to support infrastructure and development projects.</p>
+</section>
+
+<section>
+<h2>Key Skills</h2>
+<div class="grid">
+<div class="card">ArcGIS / ArcMap / Geodatabase</div>
+<div class="card">GPS & Total Station Survey</div>
+<div class="card">Mouza Map Digitization</div>
+<div class="card">AutoCAD (2D)</div>
+<div class="card">SketchUp & Lumion</div>
+<div class="card">Adobe Illustrator & Photoshop</div>
+<div class="card">WordPress Website Design</div>
+<div class="card">Soil Test Reporting</div>
+</div>
+</section>
+
+<section>
+<h2>Education</h2>
+<div class="timeline">
+<div><span>2018–2022</span><h3>B.Sc in Civil Engineering</h3><p>Presidency University | CGPA 3.36 | Thesis: Structural Engineering</p></div>
+<div><span>2015–2017</span><h3>HSC – Science</h3><p>Govt. Hazi Asmat College</p></div>
+<div><span>2013–2015</span><h3>SSC – Science</h3><p>Govt. K.B. Pilot Model High School</p></div>
+</div>
+</section>
+
+<section>
+<h2>Work Experience</h2>
+<div class="timeline">
+<div><span>2025 – Present</span><h3>GIS Operator – DDC</h3><p>Mouza & Plot Based National Digital Land Zoning Project (Rangpur Division).</p></div>
+<div><span>2024 – 2025</span><h3>Assistant Engineer (GIS)</h3><p>Land Digital Survey, GPS & Total Station based mapping.</p></div>
+<div><span>2024 – 2025</span><h3>Assistant Engineer (Part-Time)</h3><p>Equity Soil Engineering – Soil testing & reports.</p></div>
+<div><span>2022 – 2024</span><h3>GIS Operator – DDC</h3></div>
+<div><span>2022</span><h3>GIS & CAD Operator – Desh Upodesh Ltd.</h3></div>
+<div><span>2021</span><h3>Site Engineer (Part-Time)</h3></div>
+</div>
+</section>
+
+<section>
+<h2>Creative Works</h2>
+<div class="grid">
+<div class="card">Ashuganj Upazila 3D View<br><a href="https://www.youtube.com/watch?v=BTcUL4ChBH0">Watch</a></div>
+<div class="card">Bhairab K.B Pilot Model School<br><a href="https://www.youtube.com/watch?v=jC0mm51jieA&t=18s">Watch</a></div>
+<div class="card">Duplex House 3D Design<br><a href="https://www.youtube.com/watch?v=sFz7-FeYCuc">Watch</a></div>
+</div>
+</section>
+
+<section>
+<h2>Training & Certifications</h2>
+<ul>
+<li>Member – Presidency University Social Services Club</li>
+<li>12-Day Training on Counselling & Self Mastery</li>
+<li>22-Day Training on Freelancing / Outsourcing</li>
+</ul>
+</section>
+
+<section>
+<h2>Digital & Additional Skills</h2>
+<p>Arc GIS,Microsoft Word, Excel, PowerPoint, Google Drive, Google Analytics, Project Management (Basic), Photography, Graphics Design, Social Media Management.</p>
+</section>
+
+<section>
+<h2>References</h2>
+<p><b>Md. Jamal Hossain</b> – Assistant Engineer (GIS), KGDCL<br>📞 +8801721357969 | ✉️ jamal.kgdcl@gmail.com</p>
+<p><b>Jahedul Islam</b> – Assistant Professor, Presidency University<br>📞 +8801823121026 | ✉️ jaheduli@pu.edu.bd</p>
+</section>
+
+<footer>© 2026 Md Sharif Khandakar | CV Website</footer>
+
+<script>
+const secs=document.querySelectorAll('section');
+window.addEventListener('scroll',()=>{
+secs.forEach(s=>{
+if(s.getBoundingClientRect().top<window.innerHeight-120){s.classList.add('show')}
+});
+});
+</script>
+
+</body>
+</html>
