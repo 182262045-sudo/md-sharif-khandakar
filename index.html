@@ -1,267 +1,275 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Md Sharif Khandakar | 3D Animated CV</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Md Sharif Khandakar | Civil Engineer & GIS Specialist</title>
 
-<style>
-:root{
---bg:#050816;
---card:rgba(255,255,255,0.08);
---border:rgba(255,255,255,0.2);
---accent:#38bdf8;
---accent2:#22c55e;
---text:#e5e7eb;
---muted:#94a3b8;
-}
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
-*{margin:0;padding:0;box-sizing:border-box}
-body{
-font-family:'Poppins',sans-serif;
-background:radial-gradient(circle at top,#0f172a,#020617);
-color:var(--text);
-overflow-x:hidden;
-perspective:1200px;
-}
+    <style>
+        :root {
+            --bg: #020617;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --primary-text: #f1f5f9;
+            --secondary-text: #94a3b8;
+            --accent: #2563eb;
+            --accent-glow: rgba(37, 99, 235, 0.4);
+        }
 
-/* ===== FLOATING BACKGROUND ===== */
-.bg-shape{
-position:fixed;
-border-radius:50%;
-filter:blur(120px);
-opacitiy:.6;
-animation:float 20s infinite alternate;
-z-index:-1;
-}
-.bg1{width:420px;height:420px;background:#38bdf8;top:-120px;left:-120px}
-.bg2{width:380px;height:380px;background:#22c55e;bottom:-120px;right:-120px;animation-delay:4s}
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: default; }
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg);
+            color: var(--primary-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-@keyframes float{
-from{transform:translateY(0) translateX(0)}
-to{transform:translateY(-120px) translateX(80px)}
-}
+        /* Background Effects */
+        .cursor-follower {
+            position: fixed; width: 15px; height: 15px; background: #fff;
+            border-radius: 50%; pointer-events: none; z-index: 9999;
+            mix-blend-mode: difference; opacity: 0.8;
+        }
 
-/* ===== HERO ===== */
-.hero{
-min-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-transform-style:preserve-3d;
-}
+        .bg-blur {
+            position: fixed; width: 500px; height: 500px; background: var(--accent-glow);
+            filter: blur(150px); border-radius: 50%; z-index: -1; opacity: 0.15;
+        }
 
-.hero-card{
-background:var(--card);
-backdrop-filter:blur(18px);
-border:1px solid var(--border);
-border-radius:30px;
-padding:60px 50px;
-box-shadow:0 40px 120px rgba(0,0,0,.6);
-transform:rotateX(10deg) rotateY(-10deg);
-transition:1s;
-}
+        /* HERO */
+        .hero {
+            height: 100vh; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
+            background: radial-gradient(circle at center, #0f172a 0%, #020617 100%);
+            padding: 20px;
+        }
 
-.hero-card:hover{
-transform:rotateX(0) rotateY(0) scale(1.05);
-}
+        .profile-pic {
+            width: 160px; height: 160px; border-radius: 50%;
+            border: 4px solid var(--accent); padding: 5px; margin-bottom: 20px;
+            object-fit: cover;
+        }
 
-.hero img{
-width:190px;
-height:190px;
-border-radius:50%;
-border:6px solid var(--accent);
-box-shadow:0 0 60px rgba(56,189,248,.8);
-}
+        .hero h1 { font-size: clamp(2rem, 6vw, 4rem); font-weight: 800; margin-bottom: 10px; color: #fff; }
+        .hero p { font-size: 1.2rem; color: var(--accent); font-weight: 500; letter-spacing: 1px; }
 
-.hero h1{font-size:3.5rem;margin-top:25px}
-.hero p{color:var(--muted)}
+        .contact-fast { display: flex; gap: 20px; margin-top: 20px; font-size: 0.9rem; color: var(--secondary-text); }
 
-.hero-btns{
-margin-top:30px;
-display:flex;
-gap:18px;
-flex-wrap:wrap;
-justify-content:center;
-}
+        /* SECTIONS */
+        .container { max-width: 1100px; margin: 0 auto; padding: 60px 20px; }
 
-.btn{
-padding:14px 34px;
-border-radius:40px;
-font-weight:600;
-color:white;
-background:linear-gradient(135deg,var(--accent),var(--accent2));
-text-decoration:none;
-box-shadow:0 20px 60px rgba(56,189,248,.6);
-transition:.4s;
-}
+        section {
+            background: var(--card-bg); border: 1px solid rgba(255,255,255,0.05);
+            padding: 40px; border-radius: 20px; margin-bottom: 40px;
+            backdrop-filter: blur(10px); transition: 0.3s;
+        }
+        section:hover { border-color: var(--accent); background: rgba(255,255,255,0.06); }
 
-.btn:hover{transform:translateY(-8px) scale(1.08)}
+        h2 { font-size: 1.8rem; color: var(--accent); margin-bottom: 25px; border-bottom: 2px solid rgba(37,99,235,0.2); display: inline-block; }
 
-/* ===== SECTIONS ===== */
-section{
-max-width:1200px;
-margin:120px auto;
-padding:60px;
-border-radius:35px;
-background:var(--card);
-backdrop-filter:blur(18px);
-border:1px solid var(--border);
-box-shadow:0 40px 120px rgba(0,0,0,.5);
-opacity:0;
-transform:translateY(80px) rotateX(10deg);
-transition:1.2s;
-}
+        /* EXPERIENCE & EDUCATION */
+        .item { margin-bottom: 30px; border-left: 2px solid var(--accent); padding-left: 20px; position: relative; }
+        .item::before { content: ""; position: absolute; left: -7px; top: 5px; width: 12px; height: 12px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 10px var(--accent); }
+        .date { color: var(--accent); font-weight: 700; font-size: 0.85rem; }
+        .item h3 { font-size: 1.3rem; margin: 5px 0; }
+        .item b { color: #cbd5e1; display: block; margin-bottom: 8px; }
+        .item ul { padding-left: 18px; color: var(--secondary-text); font-size: 0.95rem; }
+        .item ul li { margin-bottom: 5px; }
 
-section.show{
-opacity:1;
-transform:none;
-}
+        /* SKILLS GRID */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
+        .skill-tag { background: rgba(255,255,255,0.05); padding: 12px; border-radius: 10px; text-align: center; font-size: 0.9rem; border: 1px solid transparent; transition: 0.3s; }
+        .skill-tag:hover { background: var(--accent); transform: scale(1.05); }
 
-h2{font-size:2.4rem;margin-bottom:30px}
+        /* CREATIVE WORKS */
+        .project-card { background: rgba(0,0,0,0.4); padding: 25px; border-radius: 15px; margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.05); }
+        .project-card h3 { margin-bottom: 10px; }
+        .yt-link { display: inline-block; margin-top: 10px; color: #ff0000; text-decoration: none; font-weight: 600; font-size: 0.9rem; border: 1px solid #ff0000; padding: 5px 15px; border-radius: 20px; transition: 0.3s; }
+        .yt-link:hover { background: #ff0000; color: #fff; }
 
-/* ===== GRID / CARDS ===== */
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-gap:26px;
-}
+        /* FOOTER */
+        footer { padding: 80px 20px; text-align: center; background: #010409; }
+        .ref-box { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; margin-top: 30px; text-align: left; }
+        .ref-box div { max-width: 300px; }
 
-.card{
-padding:30px;
-border-radius:25px;
-background:linear-gradient(135deg,rgba(56,189,248,.18),rgba(34,197,94,.12));
-transform-style:preserve-3d;
-transition:.6s;
-}
-
-.card:hover{
-transform:translateY(-18px) rotateX(8deg) rotateY(-8deg);
-}
-
-/* ===== TIMELINE ===== */
-.timeline{
-border-left:4px solid var(--accent);
-padding-left:30px;
-}
-.timeline div{margin-bottom:35px}
-.timeline span{color:var(--accent);font-size:14px}
-
-/* ===== FOOTER ===== */
-footer{
-text-align:center;
-padding:80px 20px;
-color:var(--muted);
-}
-
-@media(max-width:768px){
-.hero h1{font-size:2.4rem}
-section{padding:35px;margin:80px 15px}
-}
-</style>
+        @media (max-width: 768px) { 
+            section { padding: 25px; } 
+            .hero h1 { font-size: 2.2rem; } 
+            .contact-fast { flex-direction: column; gap: 10px; }
+            .ref-box { flex-direction: column; align-items: center; gap: 25px; }
+        }
+    </style>
 </head>
+
 <body>
 
-<div class="bg-shape bg1"></div>
-<div class="bg-shape bg2"></div>
+    <div class="cursor-follower"></div>
+    <div class="bg-blur" style="top: 10%; left: 5%;"></div>
+    <div class="bg-blur" style="bottom: 10%; right: 5%; background: #4f46e5;"></div>
 
-<!-- HERO -->
-<div class="hero">
-<div class="hero-card">
-<img src="profile.jpg" alt="Sharif">
-<h1>Md Sharif Khandakar</h1>
-<p>Civil Engineer • GIS Specialist • 3D Visualizer</p>
-<p>Bhairab, Kishoreganj | +8801689477972 | sharifkhandakar594@gmail.com</p>
-<div class="hero-btns">
-<a class="btn" href="cv.pdf">Download CV</a>
-<a class="btn" href="https://www.youtube.com/@mdsharifkhandakar">YouTube</a>
-<a class="btn" href="https://mdsharifkhandakardesigner.wordpress.com">Portfolio</a>
-</div>
-</div>
-</div>
+    <div class="hero">
+        <img src="profile.jpg" alt="MD SHARIF KHANDAKAR" class="profile-pic">
+        <h1 class="animate-up">MD SHARIF KHANDAKAR</h1>
+        <p class="animate-up">Civil Engineer • GIS Specialist • 3D Visualizer</p>
+        <div class="contact-fast animate-up">
+            <span>📍 Bhairab, Kishoreganj</span>
+            <span>📞 +8801689477972</span>
+        </div>
+        <div style="margin-top: 30px;" class="animate-up">
+            <a href="cv.pdf" style="background: var(--accent); color: white; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 600;">Download CV</a>
+        </div>
+    </div>
 
-<section>
-<h2>Professional Summary</h2>
-<p>Detail-oriented Civil Engineering professional with extensive experience in GIS mapping, land surveying, soil testing, and advanced 2D/3D visualization. Proven expertise in national digital land zoning projects, including mouza digitization, georeferencing, and spatial data management. Highly proficient in AutoCAD, ArcGIS, GPS, and Total Station, with a strong focus on accuracy, data integrity, and professional technical documentation to support infrastructure and development projects.</p>
-</section>
+    <div class="container">
 
-<section>
-<h2>Key Skills</h2>
-<div class="grid">
-<div class="card">ArcGIS / ArcMap / Geodatabase</div>
-<div class="card">GPS & Total Station Survey</div>
-<div class="card">Mouza Map Digitization</div>
-<div class="card">AutoCAD (2D)</div>
-<div class="card">SketchUp & Lumion</div>
-<div class="card">Adobe Illustrator & Photoshop</div>
-<div class="card">WordPress Website Design</div>
-<div class="card">Soil Test Reporting</div>
-</div>
-</section>
+        <section class="reveal">
+            <h2>Professional Summary</h2>
+            <p class="live-text">Motivated Civil Engineering professional with hands-on experience in field surveys, soil testing, and 2D/3D drawing preparation. Proficient in AutoCAD and Total Station for topographic layout and site mapping. Dedicated to delivering precise technical drawings and spatial data.</p>
+        </section>
 
-<section>
-<h2>Education</h2>
-<div class="timeline">
-<div><span>2018–2022</span><h3>B.Sc in Civil Engineering</h3><p>Presidency University | CGPA 3.36 | Thesis: Structural Engineering</p></div>
-<div><span>2015–2017</span><h3>HSC – Science</h3><p>Govt. Hazi Asmat College</p></div>
-<div><span>2013–2015</span><h3>SSC – Science</h3><p>Govt. K.B. Pilot Model High School</p></div>
-</div>
-</section>
+        <section class="reveal">
+            <h2>Work Experience</h2>
+            
+            <div class="item">
+                <span class="date">17 August 2025 – Present</span>
+                <h3>GIS Operator</h3>
+                <b>Development Design Consultants Ltd. (DDC), Dhaka</b>
+                <ul>
+                    <li>Digitization & Quality checking of GIS mouza maps.</li>
+                    <li>Georeferencing, edge matching, and topology correction.</li>
+                    <li>Exported shapefiles and integrated data with land information systems (LIS).</li>
+                </ul>
+            </div>
 
-<section>
-<h2>Work Experience</h2>
-<div class="timeline">
-<div><span>2025 – Present</span><h3>GIS Operator – DDC</h3><p>Mouza & Plot Based National Digital Land Zoning Project (Rangpur Division).</p></div>
-<div><span>2024 – 2025</span><h3>Assistant Engineer (GIS)</h3><p>Land Digital Survey, GPS & Total Station based mapping.</p></div>
-<div><span>2024 – 2025</span><h3>Assistant Engineer (Part-Time)</h3><p>Equity Soil Engineering – Soil testing & reports.</p></div>
-<div><span>2022 – 2024</span><h3>GIS Operator – DDC</h3></div>
-<div><span>2022</span><h3>GIS & CAD Operator – Desh Upodesh Ltd.</h3></div>
-<div><span>2021</span><h3>Site Engineer (Part-Time)</h3></div>
-</div>
-</section>
+            <div class="item">
+            
+                </ul>
+            </div>
 
-<section>
-<h2>Creative Works</h2>
-<div class="grid">
-<div class="card">Ashuganj Upazila 3D View<br><a href="https://www.youtube.com/watch?v=BTcUL4ChBH0">Watch</a></div>
-<div class="card">Bhairab K.B Pilot Model School<br><a href="https://www.youtube.com/watch?v=jC0mm51jieA&t=18s">Watch</a></div>
-<div class="card">Duplex House 3D Design<br><a href="https://www.youtube.com/watch?v=sFz7-FeYCuc">Watch</a></div>
-</div>
-</section>
+            <div class="item">
+                <span class="date">Sep 2024 – Aug 2025</span>
+                <h3>Assistant Engineer (Part-time)</h3>
+                <b>Equity Soil Engineering, Chattogram</b>
+                <ul>
+                    <li>Conducted field sampling and site visits for soil investigation.</li>
+                    <li>Performed laboratory tests: sieve analysis, compaction, and Atterberg limits.</li>
+                    <li>Determined soil bearing capacity for building foundations.</li>
+                </ul>
+            </div>
 
-<section>
-<h2>Training & Certifications</h2>
-<ul>
-<li>Member – Presidency University Social Services Club</li>
-<li>12-Day Training on Counselling & Self Mastery</li>
-<li>22-Day Training on Freelancing / Outsourcing</li>
-</ul>
-</section>
+            <div class="item">
+                <span class="date">Oct 2022 – Jun 2024</span>
+                <h3>GIS Operator</h3>
+                <b>Development Design Consultants Ltd. (DDC)</b>
+                <ul>
+                    <li>Digitized plot boundaries, roads, and land features from cadastral maps.</li>
+                </ul>
+            </div>
+        </section>
 
-<section>
-<h2>Digital & Additional Skills</h2>
-<p>Arc GIS,Microsoft Word, Excel, PowerPoint, Google Drive, Google Analytics, Project Management (Basic), Photography, Graphics Design, Social Media Management.</p>
-</section>
+        <section class="reveal">
+            <h2>Technical & Digital Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-tag">ArcGIS & ArcMap</div>
+                <div class="skill-tag">AutoCAD (2D)</div>
+                <div class="skill-tag">Total Station</div>
+                <div class="skill-tag">GPS Survey</div>
+                <div class="skill-tag">SketchUp</div>
+                <div class="skill-tag">Lumion 11</div>
+                <div class="skill-tag">Soil Test Reporting</div>
+                <div class="skill-tag">WordPress Design</div>
+                <div class="skill-tag">Adobe Photoshop</div>
+                <div class="skill-tag">Google Analytics</div>
+            </div>
+        </section>
 
-<section>
-<h2>References</h2>
-<p><b>Md. Jamal Hossain</b> – Assistant Engineer (GIS), KGDCL<br>📞 +8801721357969 | ✉️ jamal.kgdcl@gmail.com</p>
-<p><b>Jahedul Islam</b> – Assistant Professor, Presidency University<br>📞 +8801823121026 | ✉️ jaheduli@pu.edu.bd</p>
-</section>
+        <section class="reveal">
+            <h2>Education</h2>
+            <div class="item">
+                <span class="date">2018 - 2022</span>
+                <h3>B.Sc in Civil Engineering</h3>
+                <b>Presidency University, Dhaka</b>
+                <p>CGPA: 3.36 / 4.00 | Thesis: Structural Engineering</p>
+            </div>
+            <div class="item">
+                <span class="date">2015 - 2017</span>
+                <h3>Higher Secondary Certificate (HSC)</h3>
+                <b>Govt. Hazi Asmat College, Bhairab</b>
+            </div>
+        </section>
 
-<footer>© 2026 Md Sharif Khandakar | CV Website</footer>
+        <section class="reveal">
+            <h2>Honours & Certifications</h2>
+            <ul>
+                <li class="live-text">Member, Presidency University Social Services Club.</li>
+                <li class="live-text">12-Day Training on Counselling & Self Mastery.</li>
+                <li class="live-text">22-Day Training on Freelancing/Outsourcing (UGDP).</li>
+            </ul>
+        </section>
 
-<script>
-const secs=document.querySelectorAll('section');
-window.addEventListener('scroll',()=>{
-secs.forEach(s=>{
-if(s.getBoundingClientRect().top<window.innerHeight-120){s.classList.add('show')}
-});
-});
-</script>
+        <section class="reveal">
+            <h2>Creative Projects (3D Designs)</h2>
+            <div class="project-card">
+                <h3>Ashuganj Upazila 3D View</h3>
+                <p>Designed using AutoCAD & SketchUp (Dec 2020)</p>
+                <a href="https://www.youtube.com/watch?v=BTcUL4ChBHO" class="yt-link" target="_blank">Watch Project</a>
+            </div>
+            <div class="project-card">
+                <h3>Bhairab K.B. Pilot Model School</h3>
+                <p>Detailed 3D Design (Feb 2021)</p>
+                <a href="https://www.youtube.com/watch?v=jC0mm51jieA" class="yt-link" target="_blank">Watch Project</a>
+            </div>
+        </section>
 
+    </div>
+
+    <footer>
+        <h2>References</h2>
+        <div class="ref-box">
+            <div>
+                <b>Md. Jamal Hossain</b>
+                <p>Assistant Engineer (GIS)</p>
+                <p>Karnaphuli Gas Distribution Co. Ltd</p>
+                <p>📞 +8801721 357969</p>
+            </div>
+            <div>
+                <b>Jahedul Islam</b>
+                <p>Assistant Professor & Coordinator</p>
+                <p>Presidency University</p>
+                <p>📞 +880195806 6774</p>
+            </div>
+        </div>
+        <p style="margin-top: 60px; opacity: 0.4;">© 2026 Md Sharif Khandakar | Portfolio Design</p>
+    </footer>
+
+    <script>
+        // Mouse Follower
+        const follower = document.querySelector('.cursor-follower');
+        window.addEventListener('mousemove', (e) => {
+            gsap.to(follower, { x: e.clientX, y: e.clientY, duration: 0.5 });
+        });
+
+        // Hero Animate
+        gsap.from(".animate-up", { y: 50, opacity: 0, stagger: 0.2, duration: 1, ease: "power3.out" });
+
+        // Scroll Reveal
+        gsap.registerPlugin(ScrollTrigger);
+        document.querySelectorAll('.reveal').forEach((el) => {
+            gsap.from(el, {
+                scrollTrigger: { trigger: el, start: "top 90%" },
+                y: 50, opacity: 0, duration: 1, ease: "power2.out"
+            });
+        });
+
+        // Live Text Hover
+        document.querySelectorAll('.live-text, .item, .skill-tag').forEach(item => {
+            item.addEventListener('mouseenter', () => gsap.to(item, { x: 5, color: "#3b82f6", duration: 0.3 }));
+            item.addEventListener('mouseleave', () => gsap.to(item, { x: 0, color: "", duration: 0.3 }));
+        });
+    </script>
 </body>
 </html>
